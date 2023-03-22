@@ -1,17 +1,23 @@
-// Uncomment these imports to begin using these cool features!
-
-import {get, post} from '@loopback/rest';
-
-// import {inject} from '@loopback/core';
-
+import {inject} from '@loopback/context';
+import {get} from '@loopback/rest';
+import {
+  IcanhazdadjokeService,
+  JokesType,
+} from '../services/icanhazdadjoke.service';
 export class JokesController {
-  constructor() {}
+  constructor(
+    @inject('services.Icanhazdadjoke')
+    private icanhazdadjokeService: IcanhazdadjokeService,
+  ) {}
 
-  @get('/test')
-  async test(): Promise<string> {
-    return 'Ok';
+  @get('/jokes/in_detail')
+  getall(): Promise<JokesType> {
+    return this.icanhazdadjokeService.getSingle();
   }
 
-  @post('/jokes')
-  getJokes() {}
+  @get('/jokes/text')
+  async get(): Promise<String> {
+    const res = await this.icanhazdadjokeService.getSingle();
+    return res.joke;
+  }
 }
