@@ -67,5 +67,12 @@
     "eslint": "^8.35.0",
     "source-map-support": "^0.5.21",
     "typescript": "~4.9.4"
+  },
+  "nodemonConfig": {
+    "verbose": true,
+    "watch": [ "src/" ],
+    "ignore": [ "dist/*" ],
+    "ext": "ts",
+    "exec": "npm start"
   }
 }
