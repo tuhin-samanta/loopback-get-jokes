@@ -23,7 +23,9 @@ export class RestFulController {
   }
 
   @post(`${base}/add_item`)
-  addItem(@requestBody() item: RestFulAddItemType): RestFulAddItemTypeResponse {
+  addItem(
+    @requestBody({required: true}) item: RestFulAddItemType,
+  ): RestFulAddItemTypeResponse {
     return this.restfulService.addItem(item.name, item.data);
   }
 
@@ -31,6 +33,7 @@ export class RestFulController {
   updateItem(
     @requestBody() item: RestFulAddItemType,
     @param.path.string('id') id: string,
+    @param.query.string('name') name: string,
   ): RestFulAddItemTypeResponse {
     return this.restfulService.updateItem(id, item.name, item.data);
   }

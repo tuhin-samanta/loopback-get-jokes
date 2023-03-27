@@ -4,19 +4,19 @@ import {RestFulDataSource} from '../datasources';
 
 export interface RestFulGetListType {
   id: number;
-  ['key']: unknown;
+  [key: string]: unknown;
 }
 
 export interface RestFulAddItemType {
   name: string;
   data: {
-    ['key']: unknown;
+    [key: string]: unknown;
   };
 }
 
 export interface RestFulAddItemTypeResponse {
   id: string;
-  ['key']: unknown;
+  [key: string]: unknown;
 }
 
 export interface RestfulDeleteresponse {
