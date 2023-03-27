@@ -1,10 +1,11 @@
 // Uncomment these imports to begin using these cool features!
 
 import {inject} from '@loopback/core';
-import {get, post, requestBody} from '@loopback/rest';
+import {del, get, param, post, put, requestBody} from '@loopback/rest';
 import {
   RestFulAddItemType,
   RestFulAddItemTypeResponse,
+  RestfulDeleteresponse,
   RestFulGetListType,
   RestfulService,
 } from '../services/restful-service.service';
@@ -24,5 +25,18 @@ export class RestFulController {
   @post(`${base}/add_item`)
   addItem(@requestBody() item: RestFulAddItemType): RestFulAddItemTypeResponse {
     return this.restfulService.addItem(item.name, item.data);
+  }
+
+  @put(`${base}/update_item/{id}`)
+  updateItem(
+    @requestBody() item: RestFulAddItemType,
+    @param.path.string('id') id: string,
+  ): RestFulAddItemTypeResponse {
+    return this.restfulService.updateItem(id, item.name, item.data);
+  }
+
+  @del(`${base}/delete_item/{id}`)
+  delItem(@param.path.string('id') id: string): RestfulDeleteresponse {
+    return this.restfulService.deleteItem(id);
   }
 }

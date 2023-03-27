@@ -31,6 +31,25 @@ const config = {
         addItem: ['name', 'data'],
       },
     },
+    {
+      template: {
+        method: 'PUT',
+        url: `${baseURL}/objects/{id}`,
+        body: {name: `{name}`, data: `{data}`},
+      },
+      functions: {
+        updateItem: ['id', 'name', 'data'],
+      },
+    },
+    {
+      template: {
+        method: 'DELETE',
+        url: `${baseURL}/objects/{id}`,
+      },
+      functions: {
+        deleteItem: ['id'],
+      },
+    },
   ],
 };
 

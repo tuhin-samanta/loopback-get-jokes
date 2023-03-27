@@ -19,12 +19,22 @@ export interface RestFulAddItemTypeResponse {
   ['key']: unknown;
 }
 
+export interface RestfulDeleteresponse {
+  message: string;
+}
+
 export interface RestfulService {
   // this is where you define the Node.js methods that will be
   // mapped to REST/SOAP/gRPC operations as stated in the datasource
   // json file.
   getAll(): RestFulGetListType[];
   addItem(name: string, data: unknown): RestFulAddItemTypeResponse;
+  updateItem(
+    id: string,
+    name: string,
+    data: unknown,
+  ): RestFulAddItemTypeResponse;
+  deleteItem(id: string): RestfulDeleteresponse;
 }
 
 export class RestfulServiceProvider implements Provider<RestfulService> {
