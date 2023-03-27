@@ -24,6 +24,11 @@ const config = {
     {
       template: {
         method: 'POST',
+        url: `${baseURL}/objects`,
+        body: {name: `{name}`, data: `{data}`},
+      },
+      functions: {
+        addItem: ['name', 'data'],
       },
     },
   ],
